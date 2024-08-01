@@ -108,11 +108,11 @@ namespace EventBus.Base.SubManagers
 
         public Type GetEventTypeByName(string eventName) => _eventTypes.SingleOrDefault(t => t.Name == eventName);
 
-        public void RemoveSubscription<T, TH>()
-            where T : IntegrationEvent
-            where TH : IIntegrationEventHandler<T>
+        public void RemoveSubscription<T, TH>() where T : IntegrationEvent where TH : IIntegrationEventHandler<T>
         {
-            throw new NotImplementedException();
+            var handlerToRemove = FindSubscriptionToRemove<T, TH>();
+            var eventName = GetEventKey<T>();
+            RemoveHandler(eventName, handlerToRemove);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace EventBus.Base
         public string EventNamePrefix { get; set; } = String.Empty;
         public string EventNameSuffix { get; set; } = "IntegrationEvent";
         public EventBusType EventBusType { get; set; } = EventBusType.RabbitMQ;
-        public object Conneciton { get; set; }
+        public object Connection { get; set; }
 
         public bool DeleteEventPrefix => !String.IsNullOrEmpty(EventNamePrefix);
         public bool DeleteEventSuffix => !String.IsNullOrEmpty(EventNameSuffix);
