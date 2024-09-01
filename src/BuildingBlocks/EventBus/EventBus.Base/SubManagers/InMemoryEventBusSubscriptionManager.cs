@@ -55,7 +55,7 @@ namespace EventBus.Base.SubManagers
                 if (!_handlers[eventName].Any())
                 {
                     _handlers.Remove(eventName);
-                    var eventType = _eventTypes.SingleOrDefault(e => e.Name == eventName);
+                    var eventType = _eventTypes.SingleOrDefault(e => e.Name == subsToRemove.ToString());
                     if(eventType != null)
                         _eventTypes.Remove(eventType);
 
@@ -105,7 +105,7 @@ namespace EventBus.Base.SubManagers
         }
 
         public bool HasSubscriptionsForEvent(string eventName) => _handlers.ContainsKey(eventName);
-
+        
         public Type GetEventTypeByName(string eventName) => _eventTypes.SingleOrDefault(t => t.Name == eventName);
 
         public void RemoveSubscription<T, TH>() where T : IntegrationEvent where TH : IIntegrationEventHandler<T>

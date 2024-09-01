@@ -1,0 +1,13 @@
+﻿CatalogTypeName,CatalogBrandName,Description,Name,Price,PictureFileName,availablestock,onreorder
+T-Shirt,Zara,Comfortable and stylish basic t-shirt made from high-quality cotton,Basic Cotton T-Shirt,199.99,,150,false
+Sweatshirt,Pull&Bear,Cozy sweatshirt with a relaxed fit perfect for casual wear,Relaxed Fit Sweatshirt,299.99,,120,false
+Jean,Bershka,High-waisted skinny jeans with a flattering fit,Skinny High-Waist Jeans,349.99,,80,false
+Jewelry,LC Waikiki,Elegant silver necklace with a minimalist design,Minimalist Silver Necklace,149.99,,200,false
+Sneaker,Nike,Lightweight running shoes with excellent support and cushioning,Air Max Running Shoes,599.99,,50,false
+Hat,Adidas,Classic black cap with adjustable strap,Adidas Black Cap,99.99,adidas_black_cap.jpg,300,false
+Mug,Defacto,Ceramic mug with a stylish design,Stylish Ceramic Mug,49.99,defacto_ceramic_mug.jpg,500,false
+Sweatshirt,Defacto,Warm fleece-lined sweatshirt perfect for winter,Winter Fleece Sweatshirt,249.99,defacto_fleece_sweatshirt.jpg,100,false
+Jean,Zara,Classic straight-leg jeans with a vintage wash,Vintage Straight-Leg Jeans,399.99,zara_vintage_jeans.jpg,60,false
+Jewelry,Bershka,Gold-plated earrings with a modern geometric design,Geometric Gold Earrings,199.99,bershka_gold_earrings.jpg,150,false
+Sneaker,New Balance,Comfortable everyday sneakers with a timeless design,Classic 574 Sneakers,549.99,newbalance_574.jpg,75,false
+Hat,LC Waikiki,Casual bucket hat made from durable cotton,Cotton Bucket Hat,79.99,lcw_bucket_hat.jpg,250,false

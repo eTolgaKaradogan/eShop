@@ -1,0 +1,7 @@
+﻿T-Shirt
+Sweatshirt
+Jean
+Jewelry
+Sneaker
+Hat
+Mug

@@ -49,7 +49,7 @@ namespace EventBus.RabbitMQ
             if (!persistentConnection.IsConnected)
                 persistentConnection.TryConnect();
 
-            consumerChannel.QueueBind(queue: eventName,
+            consumerChannel.QueueBind(queue: GetSubName(eventName),
                     exchange: EventBusConfig.DefaultTopicName,
                     routingKey: eventName);
 
@@ -61,6 +61,7 @@ namespace EventBus.RabbitMQ
         {
             if (!persistentConnection.IsConnected)
                 persistentConnection.TryConnect();
+
 
             var policy = Policy.Handle<BrokerUnreachableException>()
                     .Or<SocketException>()
@@ -82,11 +83,15 @@ namespace EventBus.RabbitMQ
                 var properties = consumerChannel.CreateBasicProperties();
                 properties.DeliveryMode = 2; //persistent
 
-                consumerChannel.QueueDeclare(queue: GetSubName(eventName),
-                                    durable: true,
-                                    exclusive: false,
-                                    autoDelete: false,
-                                    arguments: null);
+                //consumerChannel.QueueDeclare(queue: GetSubName(eventName),
+                //                    durable: true,
+                //                    exclusive: false,
+                //                    autoDelete: false,
+                //                    arguments: null);
+
+                //consumerChannel.QueueBind(queue: GetSubName(eventName),
+                //                    exchange: EventBusConfig.DefaultTopicName,
+                //                    routingKey: eventName);
 
                 consumerChannel.BasicPublish(
                     exchange: EventBusConfig.DefaultTopicName,

@@ -28,25 +28,43 @@ namespace EventBus.UnitTets
         {
             services.AddSingleton<IEventBus>(sp =>
             {
-                EventBusConfig config = new()
-                {
-                    ConnectionRetryCount = 5,
-                    SubscriberClientAppName = "EventBus.UnitTest",
-                    DefaultTopicName = "eShopTopicName",
-                    EventBusType = EventBusType.RabbitMQ,
-                    EventNameSuffix = "IntegrationEvent"
-                };
-
-                return EventBusFactory.Create(config, sp);
+                return EventBusFactory.Create(GetRabbitMQConfig(), sp);
             });
 
             var sp = services.BuildServiceProvider();
 
             var eventBus = sp.GetRequiredService<IEventBus>();
             eventBus.Subscribe<OrderCreatedIntegrationEvent, OrderCreatedIntegrationEventHandler>();
-            eventBus.UnSubscribe<OrderCreatedIntegrationEvent, OrderCreatedIntegrationEventHandler>();
+            //eventBus.UnSubscribe<OrderCreatedIntegrationEvent, OrderCreatedIntegrationEventHandler>();
 
             //Assert.Pass();
+        }
+
+        private EventBusConfig GetRabbitMQConfig()
+        {
+            return new EventBusConfig()
+            {
+                ConnectionRetryCount = 5,
+                SubscriberClientAppName = "EventBus.UnitTest",
+                DefaultTopicName = "eShopTopicName",
+                EventBusType = EventBusType.RabbitMQ,
+                EventNameSuffix = "IntegrationEvent"
+            };
+        }
+
+        [Test]
+        public void send_message_to_rabbitmq()
+        {
+            services.AddSingleton<IEventBus>(sp =>
+            {
+                return EventBusFactory.Create(GetRabbitMQConfig(), sp);
+            });
+
+            var sp = services.BuildServiceProvider();
+
+            var eventBus = sp.GetRequiredService<IEventBus>();
+
+            eventBus.Publish(new OrderCreatedIntegrationEvent(1));
         }
     }
 }

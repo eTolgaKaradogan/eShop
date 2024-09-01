@@ -1,6 +1,21 @@
+using CatalogService.Persistence;
+using Microsoft.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+var webHost = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    ApplicationName = typeof(Program).Assembly.FullName,
+    ContentRootPath = Directory.GetCurrentDirectory(),
+    EnvironmentName = Environments.Staging,
+    WebRootPath = "Pics"
+}).Build();
+
+
+builder.Services.AddPersistenceServices(builder.Configuration, webHost);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
